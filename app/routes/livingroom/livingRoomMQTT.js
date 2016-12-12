@@ -13,7 +13,6 @@ client.on('connect', function() {
     client.subscribe("legoHouseWoonkamerInput");
 });
 
-
 // ROUTES FOR OUR API
 // =============================================================================
 var router = express.Router(); // get an instance of the express Router

@@ -8,6 +8,7 @@ var express = require('express'); // call express
 var app = express(); // define our app using express
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var helmet = require('helmet')
 
 mongoose.connect('mongodb://admin:xENWIbiNIMBZ0xi@ds119548.mlab.com:19548/legohouse'); // connect to our databa
 
@@ -15,6 +16,8 @@ mongoose.connect('mongodb://admin:xENWIbiNIMBZ0xi@ds119548.mlab.com:19548/legoho
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(helmet());
 
 var port = process.env.PORT || 8080; // set our port
 
