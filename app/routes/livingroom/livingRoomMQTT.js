@@ -27,7 +27,7 @@ router.route('/mqtt/livingroom/lighton')
 
     client.publish("legoHouseWoonkamerInput", "aan#");
 
-    var formData = {
+    /*  var formData = {
         lamp: 1,
         verwarming: "UNDEFINED",
         alarm: "UNDEFINED",
@@ -40,7 +40,7 @@ router.route('/mqtt/livingroom/lighton')
             return console.error('upload failed:', err);
         }
         console.log('Upload successful!  Server responded with:', body);
-    });
+    }); */
 
     res.json({ message: 'Light turned on!' });
 
@@ -53,7 +53,7 @@ router.route('/mqtt/livingroom/lightoff')
 
     client.publish("legoHouseWoonkamerInput", "uit#");
 
-    var formData = {
+    /*   var formData = {
         lamp: 0,
         verwarming: "UNDEFINED",
         alarm: "UNDEFINED",
@@ -67,7 +67,7 @@ router.route('/mqtt/livingroom/lightoff')
         }
         console.log('Upload successful!  Server responded with:', body);
     });
-
+*/
     res.json({ message: 'Light turned off!' });
 
 });
