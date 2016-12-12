@@ -21,6 +21,9 @@ app.use(helmet());
 
 var port = process.env.PORT || 8080; // set our port
 
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/index.html');
+});
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', require('./app/routes/api'), require('./app/routes/livingroom/livingRoom'), require('./app/routes/livingroom/livingRoomMQTT'));

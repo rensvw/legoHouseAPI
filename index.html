@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("button").click(function() {
+                $.get("https://rensvanwoudenberg.nl/api/mqtt/livingroom/togglelight", function(data) {
+                    alert(data);
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <button>Toggle Light</button>
+
+</body>
+
+</html>
