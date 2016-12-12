@@ -46,6 +46,17 @@ router.route('/livingroom')
     });
 });
 
+router.route('/livingroom/latest')
+
+// get the bear with that id (accessed at GET http://localhost:8080/api/livingroom/:livingroom_id)
+.get(function(req, res) {
+    LivingRoom.findOne({}, {}, { sort: { 'timestamp': -1 } }, function(err, livingroom) {
+        if (err)
+            res.send(err);
+        res.json(livingroom);
+    });
+});
+
 router.route('/livingroom/:livingroom_id')
 
 // get the bear with that id (accessed at GET http://localhost:8080/api/livingroom/:livingroom_id)

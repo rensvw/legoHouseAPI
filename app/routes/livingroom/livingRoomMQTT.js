@@ -24,52 +24,35 @@ router.route('/mqtt/livingroom/lighton')
 
 // get all the bears (accessed at GET http://localhost:8080/api/livingroom)
 .get(function(req, res) {
-
     client.publish("legoHouseWoonkamerInput", "aan#");
-
-    /*  var formData = {
-        lamp: 1,
-        verwarming: "UNDEFINED",
-        alarm: "UNDEFINED",
-        bewegingssensor: "UNDEFINED",
-        tempsensor: "UNDEFINED",
-        timestamp: Date.now(),
-    };
-    request.post({ url: 'http://127.0.0.1:8080/api/livingroom', formData: formData }, function optionalCallback(err, httpResponse, body) {
-        if (err) {
-            return console.error('upload failed:', err);
-        }
-        console.log('Upload successful!  Server responded with:', body);
-    }); */
-
     res.json({ message: 'Light turned on!' });
-
 });
 
 router.route('/mqtt/livingroom/lightoff')
 
 // get all the bears (accessed at GET http://localhost:8080/api/livingroom)
 .get(function(req, res) {
-
     client.publish("legoHouseWoonkamerInput", "uit#");
-
-    /*   var formData = {
-        lamp: 0,
-        verwarming: "UNDEFINED",
-        alarm: "UNDEFINED",
-        bewegingssensor: "UNDEFINED",
-        tempsensor: "UNDEFINED",
-        timestamp: Date.now(),
-    };
-    request.post({ url: 'http://127.0.0.1:8080/api/livingroom', formData: formData }, function optionalCallback(err, httpResponse, body) {
-        if (err) {
-            return console.error('upload failed:', err);
-        }
-        console.log('Upload successful!  Server responded with:', body);
-    });
-*/
     res.json({ message: 'Light turned off!' });
+});
 
+router.route('/mqtt/livingroom/togglelight')
+
+// get all the bears (accessed at GET http://localhost:8080/api/livingroom)
+.get(function(req, res) {
+
+    request('http://127.0.0.1:8080/api/livingroom/latest', function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var object = JSON.parse(body);
+            if (object.lamp == 1) {
+                client.publish("legoHouseWoonkamerInput", "uit#");
+                res.json({ message: 'Light turned off!' });
+            } else {
+                client.publish("legoHouseWoonkamerInput", "aan#");
+                res.json({ message: 'Light turned on!' });
+            }
+        }
+    });
 });
 
 
