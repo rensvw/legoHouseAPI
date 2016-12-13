@@ -22,7 +22,7 @@ router.route('/livingroom')
     livingroom.lamp = req.body.lamp;
     livingroom.verwarming = req.body.verwarming;
     livingroom.alarm = req.body.alarm;
-    livingroom.bewegingssensor = req.body.bewegingssensor;
+    livingroom.lightsensor = req.body.lightsensor;
     livingroom.tempsensor = req.body.tempsensor;
     livingroom.timestamp = req.body.timestamp;
 
@@ -80,7 +80,7 @@ router.route('/livingroom/:livingroom_id')
         livingroom.lamp = req.body.lamp;
         livingroom.verwarming = req.body.verwarming;
         livingroom.alarm = req.body.alarm;
-        livingroom.bewegingssensor = req.body.bewegingssensor;
+        livingroom.lightsensor = req.body.lightsensor;
         livingroom.tempsensor = req.body.tempsensor;
         livingroom.timestamp = req.body.timestamp;
 

@@ -6,7 +6,7 @@ var livingRoomDataPointSchema = new Schema({
     lamp: Number,
     verwarming: String,
     alarm: String,
-    bewegingssensor: String,
+    lightsensor: String,
     tempsensor: String,
     timestamp: Number
 }, {
